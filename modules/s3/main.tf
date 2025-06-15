@@ -1,10 +1,10 @@
-resource "aws_s3_bucket" "project_bucket_7736" {
+resource "aws_s3_bucket" "project_bucket" {
   bucket        = "${var.project_prefix}-code-bucket"
   force_destroy = true
 }
 
 resource "aws_s3_bucket_public_access_block" "allow_public" {
-  bucket = aws_s3_bucket.project_bucket_7736.id
+  bucket = aws_s3_bucket.project_bucket.id
 
   block_public_acls       = false
   block_public_policy     = false
@@ -13,7 +13,7 @@ resource "aws_s3_bucket_public_access_block" "allow_public" {
 }
 
 resource "aws_s3_bucket_policy" "public_read" {
-  bucket = aws_s3_bucket.project_bucket_7736.id
+  bucket = aws_s3_bucket.project_bucket.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -23,7 +23,7 @@ resource "aws_s3_bucket_policy" "public_read" {
         Effect    = "Allow"
         Principal = "*"
         Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.project_bucket_7736.arn}/*"
+        Resource  = "${aws_s3_bucket.project_bucket.arn}/*"
       }
     ]
   })
