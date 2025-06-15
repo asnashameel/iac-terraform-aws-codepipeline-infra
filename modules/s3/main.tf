@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "project_bucket" {
-  bucket        = "${var.project_prefix}-code-bucket"
+  bucket        = "${var.project_prefix}-code-bucket-7736"
   force_destroy = true
 }
 
