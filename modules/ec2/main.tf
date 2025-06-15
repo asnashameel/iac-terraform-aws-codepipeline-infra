@@ -122,7 +122,7 @@ resource "aws_autoscaling_group" "app_asg" {
 # Launch Template for Web Tier
 resource "aws_launch_template" "web_launch_template" {
   name_prefix   = "${var.project_prefix}-web-lt-"
-  image_id      = "ami-0b4b56913872844b2"
+  image_id      = "ami-09e6f87a47903347c"
   instance_type = "t2.micro"
 
   iam_instance_profile {
